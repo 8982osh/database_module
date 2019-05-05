@@ -1,0 +1,72 @@
+1) What data types do each of these values represent?
+1. "A Clockwork Orange" - text
+2. 42 - integer
+3. 09/02/1945 - date
+4. 98.7 - float
+5. $15.99 - string
+
+2) Explain when a database would be used. Explain when a text file would be used.
+
+A database would be used when you need to track and access specific data types. If you need to search for specific data types, make changes, and limit who can access the database, then a text file not be used.
+
+A text file would be used when you don’t need to organize information that would need to be repeatedly accessed and changed. Information in a text file could be a combination of different data types used together.  
+
+3) Describe one difference between SQL and other programming languages.
+
+SQL has commands that read much like the English language. These commands request information. The requests do not tell SQL what steps to take. Rather the requests state what information the user needs.  
+
+4) In your own words, explain how the pieces of a database system fit together at a high level.
+
+The database is an organization of tables, columns and rows, which allow data to be structured, organized and searched for speed.  
+
+5) Explain the meaning of table, row, column, and value.
+
+A table is the structure that holds all the data. The table’s columns
+hold a specific data type. The data type has a specific value. The row lists all the information from each column that belong to a unit.
+
+6) List three data types that can be used in a table.
+String, float, and integer
+
+7) Given this payments table, provide an English description of the following queries and include their results:
+
+SELECT date, amount
+FROM payments;
+
+Choose the dates and amounts from a table called payments.
+2016-05-01 1500.00
+2016-05-10 37.00
+2016-05-15 124.93
+2016-05-23 54.72
+
+SELECT amount
+FROM payments
+WHERE amount > 500;
+
+Chose the amounts from a table called payments Only provide the amounts that are greater than 500 dollars.
+1500.00
+
+SELECT *
+FROM payments
+WHERE payee = 'Mega Foods';
+
+Select all the columns from a table called payments, where the payee is called Mega Foods.
+
+2016-05-15 Mega Foods 124.93 
+
+
+8) Given this users table, write SQL queries using the following criteria and include the output:
+
+The email and sign-up date for the user named DeAndre Data.
+SELECT email, signup
+FROM users
+WHERE name = ‘DeAndre Data’; 
+
+The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+SELECT userid
+FROM users
+WHERE email = ‘aleesia.algorithm@uw.edu’;
+
+All the columns for the user ID equal to 4.
+SELECT all
+FROM users
+WHERE userid = 4; 
