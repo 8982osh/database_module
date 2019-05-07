@@ -1,0 +1,157 @@
+Use the commands above to complete the following tasks, and submit the SQL statements. Real-world examples must be distinct from those used in the text.
+
+1. List the commands for adding, updating, and deleting data.
+
+INSERT INTO, UPDATE, DELETE 
+2. Explain the structure for each type of command.
+
+INSERT INTO adds data to an already existing column. You must specify the table name, the column name and the column’s corresponding values.
+
+UPDATE modifies existing data in a table. You must specify what values are to be SET, and WHERE(the column name) those values are located.
+
+DELETE will remove all rows from a table, leaving the table empty. You must specify the row or column name with the WHERE clause if you wish to remove a specific row or column.
+
+3. What are some of the data types that can be used in tables? Give a real-world example of each type.
+
+A string would be used for username and passwords. Date would be used for birthdates or when a user logged into a system and you wish to record the date that login occurred. You would use float and money for the data in a bank account. 
+4. Decide how to create a new table to hold a list of people invited to a wedding dinner. The table needs to have first and last names, whether they sent in their RSVP, the number of guests they are bringing, and the number of meals (1 for adults and 1/2 for children).
+
+• Which data type would you use to store each of the following pieces of information?
+ • First and last name. STRING
+ • Whether they sent in their RSVP. BOOLEAN
+ • Number of guests. INTEGER
+ • Number of meals. FLOAT
+
+• Write a command that creates the table to track the wedding dinner.
+CREATE TABLE wedding (
+first_name string,
+last_name string,
+rsvp boolean,
+number_of_guests smallint,
+number_of_meals float(2, 1));
+
+• Write a command that adds a column to track whether the guest sent a thank you card.
+
+ALTER TABLE wedding ADD COLUMN card string;
+
+• You have decided to move the data about the meals to another table, so write a command to remove the column storing the number meals from the wedding table.
+
+ALTER TABLE wedding DROP COLUMN number_of_meals;
+
+• The guests will need a place to sit at the reception, so write a command that adds a column for table number.
+
+ALTER TABLE wedding ADD COLUMN table_number integer;
+
+• The wedding is over and we do not need to keep this information, so write a command that deletes the table numbers from the database.
+
+DELETE FROM wedding table;
+
+5. Write a command to create a new table to hold the books in a library with the columns ISBN, title, author, genre, publishing date, number of copies, and available copies.
+
+CREATE TABLE library (
+ISBN char,
+title string,
+genre string,
+publishing_date date,
+number_of_copies smallint,
+available_copies smallint
+);
+
+• Find three books and add their information to the table.
+
+INSERT INTO library (ISBN, title, genre, publishing_date, number_of_copies, available_copies) VALUES
+(1234456789, ‘A Dog’s Life’, ‘Fiction’, 01-02-2010, 4, 3),
+(1454882777, ‘My Memoir’, ‘Non-Fiction’, 03-182-1997, 1, 1),
+(15644321689, ‘The Pickled Tomato’, ‘Cooking’, 11-02-2015, 2, 1);
+
+• Someone has just checked out one of the books. Change the number of available copies to 1 fewer.
+
+UPDATE library SET copies=0 WHERE ISBN=1454882777;
+
+• Now one of the books has been added to the banned books list. Remove it from the table.
+
+DELETE FROM library WHERE ISBN=15644321689; 
+
+6. Write a command to make a new table to hold spacecrafts. Information should include id, name, year launched, country of origin, a brief description of the mission, orbiting body, if it is currently operating, and its approximate miles from Earth. In addition to the table creation, provide commands that perform the following operations:
+
+CREATE TABLE spacecrafts (
+id integer, 
+name string,
+year_launched date, 
+country_of_origin string, 
+mission text, 
+orbiting_body string,
+currently_operating boolean,
+distance_from_earth bigint);
+
+• Add three non-Earth-orbiting satellites to the table.
+
+INSERT INTO spacecrafts (id, name, year_launched, country_of_origin, mission, orbiting_body, currently_operating, distance_from_earth) VALUES 
+(12345, 'Sudznix', 1998, 'Canada', 'Orbit real fast', 'Pluto', 'Yes', 9,000,000,000);
+
+• Remove one of the satellites from the table since it has just crashed into the planet.
+
+DELETE FROM spacecrafts WHERE name='Crusty';
+
+• Edit another satellite because it is no longer operating and change the value to reflect that.
+
+UPDATE spacecrafts
+SET currently_operating='No',
+WHERE name='Firefly';
+
+7. Write a command to create a new table to hold the emails in your inbox. This table should include an id, the subject line, the sender, any additional recipients, the body of the email, the timestamp, whether or not you have read the email, and the id of the email chain it's in. Also provide commands that perform the following operations:
+
+CREATE TABLE emails (
+id numeric,
+subject_line string,
+sender string,
+recipients string,
+body text,
+date timestamp,
+reviewed boolean,
+email_chain_id varchar);
+
+• Add three new emails to the inbox.
+
+INSERT INTO emails (id, subject_line, sender, recipients, body, date, reviewed, email_chain_id)
+VALUES(
+11111,
+'Monday Meeting',
+'ham@labcorp.com',
+'thedude@labcorp.com',
+'The meeting has been changed to Monday. Please clear your calendar and arrive early.',
+10-10-2018,
+'Yes',
+A11111);
+
+INSERT INTO emails (id, subject_line, sender, recipients, body, date, reviewed, email_chain_id)
+VALUES(
+22222,
+'Bonuses',
+'goodboy@gmail.com',
+'wollywonka@yahoo.com',
+'Bonuses will be ready by the end of the month. Your manager will contact you with additional information.',
+01-22-2019,
+'No',
+B22222);
+
+INSERT INTO emails (id, subject_line, sender, recipients, body, date, reviewed, email_chain_id)
+VALUES(
+33333,
+'Weekend Shift',
+'yourboss@gmail.com',
+'martinshort@yahoo.com',
+'You have seen selected to work during Thanksgiving.',
+11-20-2011,
+'Yes',
+C33333);
+
+• You deleted one of the emails, so write a command to remove the row from the inbox table.
+
+DELETE FROM emails WHERE id=11111;
+
+• You started reading an email but just heard a crash in another room. Mark the email as unread before investigating the crash, so you can come back and read it later.
+
+UPDATE emails SET reviewed='Np' WHERE id=33333;
+
+
