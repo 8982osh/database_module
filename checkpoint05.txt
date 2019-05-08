@@ -1,0 +1,115 @@
+1. Write out a generic SELECT statement.
+
+SELECT * from table;
+
+2. Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+
+
+SC
+FT
+WC
+
+3. Given this dogs table, write queries to select the following pieces of data:
+
+Intake teams typically guess the breed of shelter dogs, so the breed column may have multiple words (for example, "Labrador Collie mix").
+
+Display the name, gender, and age of all dogs that are part Labrador.
+
+SELECT name, gender, age from dogs
+WHERE breed=‘labrador’;
+
+Display the ids of all dogs that are under 1 year old.
+
+SELECT id from dogs
+WHERE age < 1;
+
+Display the name and age of all dogs that are female and over 35lbs.
+
+SELECT name, age from dogs
+WHERE gender=‘female’ AND weight > 35;
+
+Display all of the information about all dogs that are not Shepherd mixes.
+
+SELECT * from dogs
+WHERE breed !=’shepherd’;
+
+Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+SELECT id, age, weight, breed from dogs
+WHERE weight > 60 OR breed=‘great danes’;
+
+4. Given this cats table, what records are returned from these queries?
+
+SELECT name, adoption_date FROM cats;
+
+Mush 2016-03-22
+Seashell 
+Azul 2016-04-17
+Victoire 2016-09-01
+Nala 
+
+SELECT name, age FROM cats;
+Mushi 1
+Seashell 7
+Azul 3
+Victoire 7
+Nala 1
+
+5. From the cats table, write queries to select the following pieces of data.
+Display all the information about all of the available cats.
+
+SELECT * FROM cats;
+
+Display the name and sex of all cats who are 7 years old.
+
+SELECT name, gender FROM cats
+WHERE age >= 7;
+
+Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+SELECT name FROM cats;
+
+6. List each comparison operator and explain when you would use it. Include a real world example for each.
+
+> 
+SELECT age > 7;
+Greater than usually refers to a comparison involving numeric data. You start at a certain number and are looking for data that is higher. For example, you are looking for students greater than 7 years to participate in a school event. But students who are 7 years old, are not included in the evaluation.
+
+<
+SELECT age < 7;
+If you are looking for a range lower than a set value, then you use the less than operator. But the set value is not included in the evaluation.
+
+>=
+SELECT age <=7;
+<=
+SELECT age >=7;
+Both greater than and equal to and less than and equal to, start at a set value. But both also include that value in the condition.
+
+!=
+SELECT children FROM rides
+WHERE happy !=‘true’;
+ 
+=
+SELECT children FROM rides
+WHERE happy =‘true;
+Both boolean operators are evaluating if a condition is true or false.
+
+AND
+SELECT age >= 7 AND height >=40;
+If you are looking for more than one condition to be met, then you would use the AND operator. For example, you want riders to be a certain age and height, before they can participate on certain amusement park rides.
+
+OR
+SELECT age >= 7 OR height >=40;
+If you only need one condition to be met, then you would use the OR operator. 
+
+If you can’t list these from memory, do these flashcards until you can!
+
+7. From the cats table, what data is returned from these queries?
+SELECT name FROM cats WHERE gender = ‘F’;
+All the names of cats that are female cats will be returned.
+
+SELECT name FROM cats WHERE age <> 3;
+All the names of cats that are not 3 years old, will be returned.
+
+SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+All the ids of cats that do not have the name Mushi and are not male will be returned.
