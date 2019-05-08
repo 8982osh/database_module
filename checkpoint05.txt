@@ -4,10 +4,11 @@ SELECT * from table;
 
 2. Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
 
+Honestly, I don’t have any suggestions. The operations are short, so therefore easy to remember. I just know the first letters of each word, in the following structure, and I am set. 
 
 SC
 FT
-WC
+WH
 
 3. Given this dogs table, write queries to select the following pieces of data:
 
