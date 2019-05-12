@@ -3,7 +3,7 @@
 2. 42 - integer
 3. 09/02/1945 - date
 4. 98.7 - float
-5. $15.99 - string
+5. $15.99 - money
 
 2) Explain when a database would be used. Explain when a text file would be used.
 
@@ -42,31 +42,55 @@ SELECT amount
 FROM payments
 WHERE amount > 500;
 
-Chose the amounts from a table called payments Only provide the amounts that are greater than 500 dollars.
+• Chose the amounts from a table called payments Only provide the amounts that are greater than 500 dollars.
 1500.00
 
 SELECT *
 FROM payments
 WHERE payee = 'Mega Foods';
 
-Select all the columns from a table called payments, where the payee is called Mega Foods.
+• Select all the columns from a table called payments, where the payee is called Mega Foods.
 
 2016-05-15 Mega Foods 124.93 
 
-
 8) Given this users table, write SQL queries using the following criteria and include the output:
 
-The email and sign-up date for the user named DeAndre Data.
-SELECT email, signup
-FROM users
-WHERE name = ‘DeAndre Data’; 
+• The email and sign-up date for the user named DeAndre Data.
 
-The user ID for the user with email 'aleesia.algorithm@uw.edu'.
-SELECT userid
-FROM users
-WHERE email = ‘aleesia.algorithm@uw.edu’;
+**Query #1**
 
-All the columns for the user ID equal to 4.
-SELECT all
-FROM users
-WHERE userid = 4; 
+    SELECT users.email, users.signup
+    FROM users
+    WHERE users.name = 'DeAndre Data';
+
+| email             | signup                   |
+| ----------------- | ------------------------ |
+| datad@comcast.net | 2008-01-20T00:00:00.000Z |
+
+• The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+
+**Query #1**
+
+    SELECT users.userid
+    FROM users
+    WHERE users.email = 'aleesia.algorithm@uw.edu';
+
+| userid |
+| ------ |
+| 1      |
+
+• All the columns for the user ID equal to 4.
+    
+**Query #1**
+
+    SELECT *
+    FROM users
+    WHERE userid = 4;
+
+| userid | name           | email             | signup                   |
+| ------ | -------------- | ----------------- | ------------------------ |
+| 4      | Brandy Boolean | bboolean@nasa.gov | 1999-10-15T00:00:00.000Z |
+
+
+
+
