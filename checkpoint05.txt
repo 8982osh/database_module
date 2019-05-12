@@ -14,83 +14,186 @@ WH
 
 Intake teams typically guess the breed of shelter dogs, so the breed column may have multiple words (for example, "Labrador Collie mix").
 
-Display the name, gender, and age of all dogs that are part Labrador.
+• Display the name, gender, and age of all dogs that are part Labrador.
 
-SELECT name, gender, age from dogs
-WHERE breed=‘labrador’;
+**Query #1**
 
-Display the ids of all dogs that are under 1 year old.
+    SELECT name, gender, age 
+    FROM dogs
+    WHERE breed='labrador';
 
-SELECT id from dogs
-WHERE age < 1;
+| name   | gender | age |
+| ------ | ------ | --- |
+| Marley | M      | 0   |
 
-Display the name and age of all dogs that are female and over 35lbs.
+---
 
-SELECT name, age from dogs
-WHERE gender=‘female’ AND weight > 35;
+• Display the ids of all dogs that are under 1 year old.
 
-Display all of the information about all dogs that are not Shepherd mixes.
+**Query #1**
 
-SELECT * from dogs
-WHERE breed !=’shepherd’;
+    SELECT id 
+    FROM dogs
+    WHERE age < 1;
 
-Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+| id    |
+| ----- |
+| 10002 |
+| 10004 |
 
-SELECT id, age, weight, breed from dogs
-WHERE weight > 60 OR breed=‘great danes’;
+---
+
+• Display the name and age of all dogs that are female and over 35lbs.
+
+**Query #1**
+
+    SELECT name, age 
+    FROM dogs
+    WHERE gender='F' AND weight > 35;
+
+| name   | age |
+| ------ | --- |
+| Boujee | 3   |
+
+---
+
+• Display all of the information about all dogs that are not Shepherd mixes.
+
+**Query #1**
+
+    SELECT * 
+    FROM dogs
+    WHERE breed !='shepherd';
+
+| id    | name      | gender | age | weight | breed              | intake_date              | in_foster                |
+| ----- | --------- | ------ | --- | ------ | ------------------ | ------------------------ | ------------------------ |
+| 10001 | Boujee    | F      | 3   | 36     | labrador poodle    | 2017-06-22T00:00:00.000Z |                          |
+| 10002 | Munchkin  | F      | 0   | 8      | dachsund chihuahua | 2017-01-13T00:00:00.000Z | 2017-01-31T00:00:00.000Z |
+| 10004 | Marley    | M      | 0   | 10     | labrador           | 2017-05-04T00:00:00.000Z | 2016-06-20T00:00:00.000Z |
+| 10003 | Lassie    | F      | 7   | 17     | collie shepherd    | 2016-07-05T00:00:00.000Z | 2017-07-22T00:00:00.000Z |
+| 10006 | Marmaduke | M      | 7   | 150    | great dane         | 2016-03-22T00:00:00.000Z | 2016-05-15T00:00:00.000Z |
+| 10007 | Rosco     | M      | 5   | 180    | rottweiler         | 2017-04-01T00:00:00.000Z |                          |
+
+---
+
+• Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+**Query #1**
+
+    SELECT id, age, weight, breed 
+    FROM dogs
+    WHERE weight > 60 OR breed='great danes';
+
+| id    | age | weight | breed      |
+| ----- | --- | ------ | ---------- |
+| 10006 | 7   | 150    | great dane |
+| 10007 | 5   | 180    | rottweiler |
+
+---
 
 4. Given this cats table, what records are returned from these queries?
 
-SELECT name, adoption_date FROM cats;
+**Query #1**
 
-Mush 2016-03-22
-Seashell 
-Azul 2016-04-17
-Victoire 2016-09-01
-Nala 
+    SELECT name, adoption_date 
+    FROM cats;
 
-SELECT name, age FROM cats;
-Mushi 1
-Seashell 7
-Azul 3
-Victoire 7
-Nala 1
+| name     | adoption_date            |
+| -------- | ------------------------ |
+| Mushi    | 2016-03-22T00:00:00.000Z |
+| Seashell |                          |
+| Azul     | 2016-04-17T00:00:00.000Z |
+| Victoire | 2016-09-01T00:00:00.000Z |
+| Nala     |                          |
+
+---
+
+**Query #1**
+
+    SELECT name, age 
+    FROM cats;
+
+| name     | age |
+| -------- | --- |
+| Mushi    | 1   |
+| Seashell | 7   |
+| Azul     | 3   |
+| Victoire | 7   |
+| Nala     | 1   |
+
+---
 
 5. From the cats table, write queries to select the following pieces of data.
-Display all the information about all of the available cats.
 
-SELECT * FROM cats;
+• Display all the information about all of the available cats.
 
-Display the name and sex of all cats who are 7 years old.
+**Query #1**
 
-SELECT name, gender FROM cats
-WHERE age >= 7;
+    SELECT * 
+    FROM cats
+    WHERE cats.adoption_date IS NULL;
 
-Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+| id  | name     | gender | age | intake_date              | adoption_date |
+| --- | -------- | ------ | --- | ------------------------ | ------------- |
+| 2   | Seashell | F      | 7   | 2016-01-09T00:00:00.000Z |               |
+| 5   | Nala     | F      | 1   | 2016-01-12T00:00:00.000Z |               |
 
-SELECT name FROM cats;
+---
+
+• Display the name and sex of all cats who are 7 years old.
+
+**Query #1**
+
+    SELECT name, gender 
+    FROM cats
+    WHERE age = 7;
+
+| name     | gender |
+| -------- | ------ |
+| Seashell | F      |
+| Victoire | M      |
+
+---
+
+• Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+**Query #1**
+
+    SELECT name 
+    FROM cats;
+
+| name     |
+| -------- |
+| Mushi    |
+| Seashell |
+| Azul     |
+| Victoire |
+| Nala     |
+
+---
 
 6. List each comparison operator and explain when you would use it. Include a real world example for each.
 
-> 
+> Greater Than
 SELECT age > 7;
 Greater than usually refers to a comparison involving numeric data. You start at a certain number and are looking for data that is higher. For example, you are looking for students greater than 7 years to participate in a school event. But students who are 7 years old, are not included in the evaluation.
 
-<
+< Less Than
 SELECT age < 7;
 If you are looking for a range lower than a set value, then you use the less than operator. But the set value is not included in the evaluation.
 
->=
+>= Greater Than or Equal To
 SELECT age <=7;
-<=
+
+<= Less Than of Equal To
 SELECT age >=7;
 Both greater than and equal to and less than and equal to, start at a set value. But both also include that value in the condition.
 
-!=
+!= Not Equal To
 SELECT children FROM rides
 WHERE happy !=‘true’;
  
-=
+= Equal To
 SELECT children FROM rides
 WHERE happy =‘true;
 Both boolean operators are evaluating if a condition is true or false.
@@ -106,11 +209,47 @@ If you only need one condition to be met, then you would use the OR operator.
 If you can’t list these from memory, do these flashcards until you can!
 
 7. From the cats table, what data is returned from these queries?
-SELECT name FROM cats WHERE gender = ‘F’;
+
 All the names of cats that are female cats will be returned.
+**Query #1**
 
-SELECT name FROM cats WHERE age <> 3;
+    SELECT name 
+    FROM cats 
+    WHERE gender = 'F';
+
+| name     |
+| -------- |
+| Seashell |
+| Nala     |
+
+---
+
 All the names of cats that are not 3 years old, will be returned.
+**Query #1**
 
-SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+    SELECT name 
+    FROM cats 
+    WHERE age <> 3;
+
+| name     |
+| -------- |
+| Mushi    |
+| Seashell |
+| Victoire |
+| Nala     |
+
+---
+
 All the ids of cats that do not have the name Mushi and are not male will be returned.
+**Query #1**
+
+    SELECT ID 
+    FROM cats 
+    WHERE name != 'Mushi' AND gender = 'M';
+
+| id  |
+| --- |
+| 3   |
+| 4   |
+
+---
